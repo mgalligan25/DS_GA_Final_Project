@@ -43,11 +43,12 @@ All categorical features (e.g. earliest_country) were encoded numerically withou
 
 ## Train
 ```
-Only 3% of foreign ORCID scientists in this dataset are US Migrants so I used the SMOTE algorithm through imblearn to upsample US Migrants synthetically on only the training data to avoid overfitting.
+Only 3% of foreign ORCID scientists in this dataset are US Migrants so I used the SMOTE algorithm through imblearn to upsample US Migrants for training.
 
 Using this synthetically upsampled training data, I tuned 3 classifiers with various strengths and weaknesses. 
 Then I used a soft voting classifier (weighted according to recall performance against the raw training split) to create an ensemble model. 
 Different weights produced slightly higher recall in validation (as high as .87 recall), but at too great a cost to overall accuracy (just above .6).
+
 Classifiers used (in order of voting weight):
 XGBClassifier
 GradientBoostingClassifier
@@ -65,7 +66,7 @@ recall: .814
 
 ## Test
 ```
-Test scores are very similar to validation, indicating that upsampling against imbalance did not cause overfit. 
+Test scores are very similar to validation, as validation is just the raw training data (without upsample). 
 
 Test Results
 accuracy: .691
