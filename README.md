@@ -1,6 +1,6 @@
 # Predicting Scientist Migration to the U.S.
 
-In this project, I will predict the liklihood of foreign scientist migration to the United States using a subset of ORCID data provided through [ORCID](https://orcid.org/content/download-file "ORCID Download File") and [Kaggle](https://www.kaggle.com/jboysen/scientist-migrations "Kaggle Scientist Migration Page"). Specifically, the goal is to identify the foreign scientists' likely to migrate to the U.S. given the earliest information provided through ORCID. To the extent there is error, the model will be designed to err to the side of false-positives so as not to miss migrants, i.e. the model will emphasize recall over precision.
+In this project, I will predict the likelihood of foreign scientist migration to the United States using a subset of ORCID data provided through [ORCID](https://orcid.org/content/download-file "ORCID Download File") and [Kaggle](https://www.kaggle.com/jboysen/scientist-migrations "Kaggle Scientist Migration Page"). Specifically, the goal is to identify the foreign scientists' likely to migrate to the U.S. given the earliest information provided through ORCID. To the extent there is error, the model will be designed to err to the side of false-positives so as not to miss migrants, i.e. the model will emphasize recall over precision.
 ### Acknowledgements
 Bohannon J, Doran K (2017) Introducing ORCID. Science 356(6339) 691-692. http://dx.doi.org/10.1126/science.356.6339.691
 
@@ -46,7 +46,7 @@ All categorical features (e.g. earliest_country) were encoded numerically withou
 Only 3% of foreign ORCID scientists in this dataset are US Migrants so I used the SMOTE algorithm through imblearn to upsample US Migrants for training.
 
 Using this synthetically upsampled training data, I tuned 3 classifiers with various strengths and weaknesses. 
-Then I used a soft voting classifier (weighted according to recall performance against the raw training split) to create an ensemble model. 
+I used a soft voting classifier (weighted according to recall performance against the raw training split) to create a well-rounded ensemble model. 
 Different weights produced slightly higher recall in validation (as high as .87 recall), but at too great a cost to overall accuracy (just above .6).
 
 Classifiers used (in order of voting weight):
